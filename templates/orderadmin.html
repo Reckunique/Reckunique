@@ -1,0 +1,137 @@
+{% extends 'productdetails.html' %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block title %}<title>Delivered Order</title>{% endblock %}
+</head>
+{% block body %}
+    <div class="container-fluid" style="">
+        <div class="row">
+            <div class="box mt-0 pb-0 no-horizontal-padding mx-auto">
+                <!--Available Address-->
+                <div class="bg-dark text-white px-4 py-3 text-uppercase font-weight-bold">Order(s)</div>
+                <div class="table-responsive">
+                    <table class="table">
+
+                        <thead class="thead-light bg-dark">
+                        <tr>
+                            <th scope="col" class="border-0 bg-light">
+                                <div class="p-2 text-uppercase">Product</div>
+                            </th>
+                            <th scope="col" class="border-0 bg-light">
+                                <div class="p-2 px-1 text-uppercase">size</div>
+                            </th>
+                            <th scope="col" class="border-0 bg-light">
+                                <div class="p-2 px-1 text-uppercase">quantity</div>
+                            </th>
+                            <th scope="col" class="border-0 bg-light">
+                                <div class="p-2 px-1 text-uppercase">Price</div>
+                            </th>
+                            <th scope="col" class="border-0 bg-light">
+                                <div class="p-2 px-1 text-uppercase">Username</div>
+                            </th>
+
+                            <th scope="col" class="border-0 bg-light">
+                                <div class="p-2 px-1 text-uppercase">Email</div>
+                            </th>
+                            <th scope="col" class="border-0 bg-light">
+                                <div class="p-2 px-1 text-uppercase">Mobile</div>
+                            </th>
+                            <th scope="col" class="border-0 bg-light">
+                                <div class="p-2 px-1 text-uppercase">Address</div>
+                            </th>
+                            <th scope="col" class="border-0 bg-light">
+                                <div class="p-2 px-1 text-uppercase">city</div>
+                            </th>
+                            <th scope="col" class="border-0 bg-light">
+                                <div class="p-2 px-1 text-uppercase">state</div>
+                            </th>
+                            <th scope="col" class="border-0 bg-light">
+                                <div class="p-2 px-1 text-uppercase">&nbsp;</div>
+                            </th>
+
+                        </tr>
+                        </thead>
+                        <tbody class="checkout-address" style="font-weight: 500">
+                        {% for i in Data %}
+                            <tr>
+                                <th scope="row" class="border-0">
+                                    <div class="p-1">
+                                        <img src="{{ i.order_product.img1.url }}"
+                                             alt="" width="50" class="img-fluid rounded shadow-sm">
+                                        <div class="ml-0 d-inline-block align-middle"
+                                             style="width: 50%; white-space: normal">
+                                            <h5 class="mb-0"><a href="#" class="text-dark d-inline-block align-middle"
+                                            >
+                                                {{ i.order_product.name }}</a></h5>
+                                        </div>
+                                    </div>
+                                </th>
+                                <td class="border-0 align-middle" style="text-align: center">
+                                    <strong>
+                                        {{ i.order_product.size }}
+                                    </strong>
+                                </td>
+                                <td class="border-0 align-middle" style="text-align: center">
+                                    <strong>
+                                        {{ i.count }}
+                                    </strong>
+                                </td>
+                                <td class="border-0 align-middle" style="text-align: center">
+                                    <strong>
+                                        {{ i.order_product.price }}
+                                    </strong>
+                                </td>
+
+                                <td class="border-0 align-middle">
+
+                                    {{ i.order_address.chname }}
+
+                                </td>
+                                <td class="border-0 align-middle">
+
+                                    {{ i.order_address.email }}
+
+                                </td>
+                                <td class="border-0 align-middle">
+
+                                    {{ i.order_address.mobile }}
+
+                                </td>
+                                <td class="border-0 align-middle">
+
+                                    {{ i.order_address.address }}
+
+                                </td>
+                                <td class="border-0 align-middle" style="text-align: center">
+
+                                    {{ i.order_address.city }}
+
+                                </td>
+                                <td class="border-0 align-middle" style="text-align: center;text-transform: capitalize">
+
+                                    {{ i.order_address.state }}
+
+                                </td>
+
+                                <td class="border-0 align-middle">
+                                    <strong>
+                                        <a class="btn btn-dark" href="/dispatchedorder/{{ i.ordernumber }}/">Dispatch
+                                            Order</a>
+                                    </strong>
+                                </td>
+
+
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ######## Main Content Wrapper End ##### -->
+{% endblock %}
+</html>

@@ -1,0 +1,130 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block title %}
+        <title>Checkout</title>
+    {% endblock %}
+</head>
+{% block body %}
+    <div class="container-fluid" style="height: 100vh">
+        <div class="row">
+
+            <div class="  col-sm-12 col-lg-8 col-md-10 bg-white bg-light px-4 text-uppercase">
+                <!--Available Address-->
+                <div class="p-3 bg-white rounded shadow-sm">
+                    <div class="bg-dark text-white px-4 py-3 text-uppercase font-weight-bold">Checkout</div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col" class="border-0 bg-light">
+                                    <div class="p-2 px-1 text-uppercase">Name</div>
+                                </th>
+                                <th scope="col" class="border-0 bg-light">
+                                    <div class="p-2 px-1 text-uppercase">Mobile</div>
+                                </th>
+                                <th scope="col" class="border-0 bg-light">
+                                    <div class="p-2 px-1 text-uppercase">Email</div>
+                                </th>
+                                <th scope="col" class="border-0 bg-light">
+                                    <div class="p-2 px-1 text-uppercase">Address</div>
+                                </th>
+                                <th scope="col" class="border-0 bg-light">
+                                    <div class="p-2 px-1 text-uppercase">city</div>
+                                </th>
+                                <th scope="col" class="border-0 bg-light">
+                                    <div class="p-2 px-1 text-uppercase">state</div>
+                                </th>
+                                <th scope="col" class="border-0 bg-light">
+                                    <div class="p-2 px-1 text-uppercase">pincode</div>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody class="checkout-address" style="font-weight: 500">
+                            {% for i in Data %}
+                                <tr>
+                                    <td class="border-0 align-middle">
+
+                                        {{ i.chname }}
+
+                                    </td>
+                                    <td class="border-0 align-middle">
+
+                                        {{ i.mobile }}
+
+                                    </td>
+                                    <td class="border-0 align-middle">
+
+                                        {{ i.email }}
+
+                                    </td>
+                                    <td class="border-0 align-middle">
+
+                                        {{ i.address }}
+
+                                    </td>
+                                    <td class="border-0 align-middle">
+
+                                        {{ i.city }}
+
+                                    </td>
+                                    <td class="border-0 align-middle text-uppercase" style="text-align: center">
+
+                                        {{ i.state }}
+
+                                    </td>
+                                    <td class="border-0 align-middle" style="text-align: center">
+
+                                        {{ i.pin }}
+
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <form action="#" method="post">
+                    {% csrf_token %}
+                    <div class="py-3 p-3 bg-white rounded shadow-sm">
+                        <div class="bg-light px-4 py-3 text-uppercase font-weight-bold">Final Order summary</div>
+                        <div class="p-4">
+                            <p class="font-italic mb-4">Shipping and additional costs are calculated based on values you
+                                have entered.</p>
+                            <ul class="list-unstyled mb-4">
+                                <li class="d-flex justify-content-between py-3 border-bottom"><strong
+                                        class="text-muted">Order Subtotal </strong><strong>&#8377;{{ Total }}</strong>
+                                </li>
+                                <li class="d-flex justify-content-between py-3 border-bottom"><strong
+                                        class="text-muted">Shipping and handling</strong><strong>Free</strong></li>
+                                <li class="d-flex justify-content-between py-3 border-bottom"><strong
+                                        class="text-muted">Total</strong>
+                                    <h5 class="font-weight-bold">&#8377;{{ Total }}</h5>
+                                </li>
+                                <li class="d-flex justify-content-between py-3 border-bottom"><strong
+                                        class="text-muted">Mode Of Delivery</strong>
+                                    <h5 class="inputBox selectdiv">
+                                        <select name="choice" class="input pt-0"  style="font-size: 20px">
+                                            <option value="COD">Cash On Delivery</option>
+                                            <option value="PAYTM">Paytm</option>
+                                        </select>
+                                    </h5>
+                                </li>
+                            </ul>
+                            <button type="submit" class="btn btn-dark rounded-pill btn-block p-2">Place Order
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock body %}
+</html>

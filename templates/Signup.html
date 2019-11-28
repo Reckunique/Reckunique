@@ -1,0 +1,61 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    {% block title %}
+  <title>Signup</title>
+    {% endblock %}
+</head>
+{% block body %}
+     <div class="container">
+          <div class="row">
+            <div class="col-lg-6 mx-auto">
+              <div class="box">
+                <h2 class="text-uppercase">New account</h2>
+                <p class="lead">Not our registered customer yet?</p>
+                <p>With registration with us new world of fashion, fantastic discounts and much more opens to you! The whole process will not take you more than a minute!</p>
+                <p class="text-muted">If you have any questions, please feel free to <a href="contact.html">contact us</a></p>
+                <hr>
+                <form method="post">
+                        {% csrf_token %}
+
+                  <div class="form-group">
+                      <label>Username</label>
+                       <input type="text" placeholder="Username" name="uname" required="" autofocus="" class="form-control "></div>
+                  <div class="form-group">
+                      <label>First Name</label>
+                          <input type="text" placeholder="First Name" name="first_name" required="" autofocus="" class="form-control "></div>
+                  <div class="form-group">
+                      <label>Last Name</label>
+                          <input type="text" placeholder="Last Name" name="last_name" required="" autofocus="" class="form-control "></div>
+                  <div class="form-group">
+                      <label>Email</label>
+                          <input type="email" placeholder="Email Address" name="email" required="" autofocus="" class="form-control "></div>
+                  <div class="form-group">
+                      <label>Password</label>
+                          <input type="password" placeholder="Password" name="pward" required="" class="form-control "></div>
+                  <div class="form-group">
+                      <label>Confirm Password</label>
+                          <input type="password" placeholder="Confirm Password" name="cpward" required="" class="form-control ">
+                      </div>
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-template-outlined"><i class="fa fa-user-md"></i> Register</button>
+                  </div>
+                </form>
+                   {% if messages %}
+                      <div class="alert-danger">
+                          {% for i in messages %}
+                          {{ i }}
+                          {% endfor %}
+                      </div>
+                  {% endif %}
+              </div>
+            </div>
+          </div>
+ </div>
+{% endblock %}
+
+</html>
+

@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+{% load staticfiles%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Product</title>
+</head>
+<body>
+<div style="margin-top: 100px">
+{% block body %}
+      <form class="form-inline my-2 my-lg-0" action="" method="post">
+            {% csrf_token %}
+            <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+       </form>
+{% endblock %}
+
+
+
+</div>
+</body>
+</html>

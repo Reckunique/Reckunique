@@ -1,0 +1,77 @@
+<!doctype html>
+{% extends 'index.html' %}
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+        <title>Login</title>
+    {% endblock %}
+</head>
+{% block body %}
+<div id="heading-breadcrumbs">
+        <div class="container">
+          <div class="row d-flex align-items-center flex-wrap">
+            <div class="col-md-7">
+            </div>
+            <div class="col-md-5">
+              <ul class="breadcrumb d-flex justify-content-end">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">Sign In</li>
+              </ul>
+            </div>
+
+             <div class="col-lg-6">
+              <div class="box">
+                <h2 class="text-uppercase">Login</h2>
+                  <hr>
+                <form method="post">
+                        {% csrf_token %}
+ <div class="form-group ">
+     <label >Username</label>
+
+                                        <input type="text" placeholder="Username" name="usernam" required=""
+                                               autofocus="" class="form-control ">
+                                    </div>
+                                    <div class="form-group">                    <label>Password</label>
+
+                                        <input type="password" placeholder="Password" name="passwrd" required=""
+                                               class="form-control ">
+                                    </div>
+
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-template-outlined"><i class="fa fa-sign-in"></i> Log in</button>
+
+
+                     <div class="btn btn-template-outlined"><a href="/signup/"
+                                                                                                    class="font-italic text-muted">
+                         Create an account</a></div></div>
+                </form>
+              </div>
+            </div>
+              {% if messages %}
+                                    <div class="alert alert-danger">
+                                        {% for i in messages %}
+                                            {{ i }}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+
+                </div>
+            </div><!-- End -->
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+</html>

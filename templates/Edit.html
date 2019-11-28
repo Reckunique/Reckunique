@@ -1,0 +1,93 @@
+{% extends 'index.html' %}
+<!DOCTYPE html>
+<html lang="en">
+{% block body %}
+    <div class="container" style="margin-top: -20vh">
+        <div class="row">
+            <div class="col-lg-10 offset-1">
+                <div class="addAdressFixed">
+                    <form method="post" action="#" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h1 style="font-weight: 300">Update Product Details</h1>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="inputBoxFixed">
+                                    <div class="inputTextFixed">Product Name</div>
+                                    <input type="text" name="name" class="inputFixed" value="{{ Data.name }}" autofocus
+                                           required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="inputBoxFixed">
+                                    <div class="inputTextFixed">Description</div>
+                                    <input type="text" name="description" class="inputFixed" value="{{ Data.description }}"
+                                           required>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="inputBoxFixed">
+                                    <div class="inputTextFixed">Base Price</div>
+                                    <input type="number" name="basicPrice" class="inputFixed" value="{{ Data.basicPrice }}"
+                                           required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="inputBoxFixed">
+                                    <div class="inputTextFixed">Discount Rate</div>
+                                    <input type="number" name="discount" class="inputFixed" value="{{ Data.discount }}"
+                                           required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="inputBoxFixed">
+                                    <div class="inputTextFixed">Colour</div>
+                                    <input type="text" name="color" class="inputFixed" value="{{ Data.color }}" required>
+                                    <span class="hint"> e.g. Green</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 py-1">
+                                <button type="submit" class="btn btn-template-outlined "
+                                        style="font-size: 20px">Update Product
+                                </button>
+                            </div>
+                            <div class="col-sm-6 py-1">
+                                <a href="/adminpage/" class="btn btn-template-outlined "
+                                   style="font-size: 20px">Back</a>
+                            </div>
+                        </div>
+                    </form>
+
+                    {% if messages %}
+                        <div class="row py-2">
+                            <div class="col-sm-12">
+                                <div class="btn btn-template-outlined " style="font-size: 20px">
+                                    {% for i in messages %}
+                                        {{ i }}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+</html>

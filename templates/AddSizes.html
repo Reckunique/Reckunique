@@ -1,0 +1,109 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block title %}
+        <title>Add Size</title>
+    {% endblock %}
+</head>
+{% block body %}
+    <div class="container-fluid" style="margin-top: -18vh ">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-1">
+                    <div class="addAdressFixed">
+                        <form method="post" action="#" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h1 style="font-weight: 300">Add Size</h1>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="inputBoxFixed">
+                                        <div class="inputTextFixed">Product ID</div>
+                                        <input type="text" name="id" class="inputFixed" value="{{ Data.id }}" required>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="inputBoxFixed">
+                                        <div class="inputTextFixed">Product Name</div>
+                                        <input type="text" name="name" class="inputFixed" value="{{ Data.name }}"
+                                               id="myText"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="inputBoxFixed">
+                                        <div class="inputTextFixed">Description</div>
+                                        <input type="text" name="description" class="inputFixed"
+                                               value="{{ Data.description }}" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="inputBoxFixed selectdiv">
+                                        <div class="inputTextFixed" style="white-space: nowrap">Select Size</div>
+                                        <select class="inputFixed" name="size">
+                                            {% for i in Siz %}
+                                                {% if i.sname != "all" %}
+                                                    <option value="{{ i }}">{{ i }}</option>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="inputBoxFixed">
+                                        <div class="inputTextFixed">Colour</div>
+                                        <input type="text" name="color" value="{{ Data.color }}" class="inputFixed"
+                                               required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="inputBoxFixed">
+                                        <div class="inputTextFixed">Base Price</div>
+                                        <input type="number" name="basicPrice" value="{{ Data.basicPrice }}"
+                                               class="inputFixed" required>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="inputBoxFixed">
+                                        <div class="inputTextFixed">Discount</div>
+                                        <input type="number" name="discount" value="{{ Data.discount }}"
+                                               class="inputFixed" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6 py-1">
+                                    <button type="submit" class="btn btn-template-outlined"
+                                            style="font-size: 20px">Save
+                                    </button>
+                                </div>
+                                <div class="col-sm-6 py-1">
+                                    <a href="/adminpage/" class="btn btn-template-outlined "
+                                       style="font-size: 20px">Back To Admin</a>
+                                </div>
+                            </div>
+                        </form>{% if messages %}
+                        <div class="row p-2">
+                            <div class="btn btn-dark">
+                                {% for i in messages %}
+                                    {{ i }}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+</html>

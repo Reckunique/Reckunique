@@ -1,0 +1,128 @@
+{% extends 'productdetails.html' %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+{% block body %}
+
+
+    <!-- ##### Main Content Wrapper End ##### -->
+    <div class="container-fluid" style="margin-top:10vh">
+        <div class="row">
+            <div class="col-sm-12 py-1 text-uppercase bg-dark text-white" style="font-size: x-large">
+                Checkout
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 p-2 bg-white rounded mb-auto">
+                    <!--Available Address-->
+                    <div class="table-responsive">
+                        <table class="table box">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col" class="border-0 bg-light">
+                                    <div class="p-2 px-1 text-uppercase">Name</div>
+                                </th>
+                                <th scope="col" class="border-0 bg-light">
+                                    <div class="p-2 px-1 text-uppercase">Mobile</div>
+                                </th>
+                                <th scope="col" class="border-0 bg-light">
+                                    <div class="p-2 px-1 text-uppercase">Email</div>
+                                </th>
+                                <th scope="col" class="border-0 bg-light">
+                                    <div class="p-2 px-1 text-uppercase">Address</div>
+                                </th>
+                                <th scope="col" class="border-0 bg-light">
+                                    <div class="p-2 px-1 text-uppercase">city</div>
+                                </th>
+                                <th scope="col" class="border-0 bg-light">
+                                    <div class="p-2 px-1 text-uppercase">state</div>
+                                </th>
+                                <th scope="col" class="border-0 bg-light">
+                                    <div class="p-2 px-1 text-uppercase">pincode</div>
+                                </th>
+                                <th scope="col" class="border-0 bg-light">
+                                    <div class="p-2 px-1 text-uppercase">delete</div>
+                                </th>
+
+                                <th scope="col" class="border-0 bg-light">
+                                    <div class="p-2 px-1 text-uppercase">&nbsp;</div>
+                                </th>
+
+                            </tr>
+                            </thead>
+                            <tbody class="checkout-address" style="font-weight: 500">
+                            {% for i in Data %}
+                                <tr>
+                                    <td class="border-0 align-middle">
+
+                                        {{ i.chname }}
+
+                                    </td>
+                                    <td class="border-0 align-middle">
+
+                                        {{ i.mobile }}
+
+                                    </td>
+                                    <td class="border-0 align-middle">
+
+                                        {{ i.email }}
+
+                                    </td>
+                                    <td class="border-0 align-middle">
+
+                                        {{ i.address }}
+
+                                    </td>
+                                    <td class="border-0 align-middle">
+
+                                        {{ i.city }}
+
+                                    </td>
+                                    <td class="border-0 align-middle text-uppercase" style="text-align: center">
+
+                                        {{ i.state }}
+
+                                    </td>
+                                    <td class="border-0 align-middle" style="text-align: center">
+
+                                        {{ i.pin }}
+
+                                    </td>
+                                    <td class="border-0 align-middle" style="text-align: center">
+                                        <strong>
+                                            <a href="/delete2/{{ i.checkid }}/" class="text-dark">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        </strong>
+                                    </td>
+                                    <td class="border-0 align-middle">
+                                        <strong>
+                                            <a class="btn-template-outlined" href="/checkout/{{ i.checkid }}/">Select</a>
+                                        </strong>
+                                    </td>
+
+
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            <div class="col-lg-12 py-1 text-uppercase btn-light text-center " style="font-size: x-large">
+                <strong>
+                    <a href="/addaddress2/" class="btn-template-outlined">
+                        Add new Address
+                    </a>
+                </strong>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ##### Main Content Wrapper End ##### -->
+
+{% endblock body %}
+</html>

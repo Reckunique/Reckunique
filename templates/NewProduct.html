@@ -1,0 +1,142 @@
+{% extends 'productdetails.html' %}
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}<title>Add Product</title>{% endblock %}
+</head>
+<body>
+{% block body %}
+           <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-1">
+                    <div class="addAdress box">
+                        <form method="post" action="#" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h1 style="font-weight: 300">New Product</h1>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="inputBox">
+                                        <label>Product Id*</label>
+                                        <input type="text" name="id" class="input" required>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="inputBox">
+                                        <label>Product Name*</label>
+                                        <input type="text" name="name" class="input" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="inputBox">
+                                        <label>Description*</label>
+                                        <input type="text" name="description" class="input" required>
+                                        <span class="hint">e.g. Detail About Product</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="inputBoxFixed selectdiv">
+                                        <label>Select Category</label>
+                                        <select class="inputFixed" name="cat">
+                                            {% for i in Cat %}
+                                                <option value="{{ i }}">{{ i }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="inputBox">
+                                        <label>Color*</label>
+                                        <input type="text" name="color" class="input" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="inputBox">
+                                        <label>Base Price*</label>
+                                        <input type="number" name="basicPrice" class="input updownarrow" required autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="inputBox">
+                                        <label>Discount Rate*</label>
+                                        <input type="number" name="discount" class="input" required>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="inputBox">
+                                    <input type="file" name="img1" class="input">
+                                </div>
+                            </div><div class="col-sm-4">
+                                <div class="inputBox">
+                                    <input type="file" name="img2" class="input">
+                                </div>
+                            </div><div class="col-sm-4">
+                                <div class="inputBox">
+                                    <input type="file" name="img3" class="input">
+                                </div>
+                            </div><div class="col-sm-4">
+                                <div class="inputBox">
+                                    <input type="file" name="img4" class="input">
+                                </div>
+                            </div><div class="col-sm-4">
+                                <div class="inputBox">
+                                    <input type="file" name="img5" class="input">
+                                </div>
+                            </div><div class="col-sm-4">
+                                <div class="inputBox">
+                                    <input type="file" name="img6" class="input">
+                                </div>
+                            </div>
+                        </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12 py-1 text-right">
+                                        <button type="submit" class="btn btn-template-outlined "
+                                                style="font-size: 15px" >Confirm
+                                        </button>
+                                    </div>
+
+                                </div>
+
+                        </form>
+
+                        {% if messages %}
+                            <div class="row p-2">
+                            <div class="alert alert-danger">
+                            {% for i in messages %}
+                                {{ i }}
+                            {% endfor %}
+                            </div>
+                            </div>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+{% endblock body %}
+
+</body>
+</html>
+<script>
+
+</script>

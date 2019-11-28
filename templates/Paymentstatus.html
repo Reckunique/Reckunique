@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    <title>About Us</title>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        {{ response }}
+        <div class="col my-4">
+
+            <h1> Payment status regarding your order Id {{ response.ORDERID }}</h1><br>
+            {% if response.RESPCODE == '01' %}
+                ORDER SUCCESS
+            {% else %}
+                ORDER FAILURE
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+    <script>
+
+    </script>
+{% endblock %}

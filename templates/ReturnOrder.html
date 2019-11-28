@@ -1,0 +1,80 @@
+{% extends 'productdetails.html' %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block title %}<title>Return Order</title>{% endblock %}
+</head>
+{% block body %}
+
+
+     <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-10 offset-1 p-3 bg-white rounded shadow-sm mb-8">
+                <!-- Shopping cart table -->
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col" class="border-0 bg-light">
+                                <div class="p-2 px-2 text-uppercase">Product</div>
+                            </th>
+                            <th scope="col" class="border-0 bg-light">
+                                <div class="py-2 text-uppercase">Price</div>
+                            </th>
+                            <th scope="col" class="border-0 bg-light">
+                                <div class="py-2 text-uppercase">Size</div>
+                            </th>
+                            <th scope="col" class="border-0 bg-light">
+                                <div class="py-2 px-3 text-uppercase">Quantity</div>
+                            </th>
+                            <th scope="col" class="border-0 bg-light">
+                                <div class="py-2 px-3 text-uppercase">Confirmation</div>
+                            </th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in Data %}
+                            <tr>
+                                <th scope="row" class="border-0">
+                                    <div class="p-3">
+                                        <img src="{{ i.order_product.img1.url }}"
+                                             alt="" width="70" class="img-fluid rounded shadow-sm">
+                                        <div class="ml-1 d-inline-block align-middle"
+                                             style="width: 58%; white-space: nowrap;overflow : hidden;text-overflow: ellipsis;resize: horizontal">
+                                            <h5 class="mb-0"><a href="#" class="text-dark d-inline-block align-middle"
+                                            >
+                                                {{ i.order_product.name }}</a></h5>
+                                        </div>
+                                    </div>
+                                </th>
+                                <td class="border-0 align-middle"><strong>&#8377;{{ i.order_product.price }}</strong>
+                                </td>
+                                <td class="border-0 align-middle" style="text-align: center">
+                                    <strong>{{ i.order_product.size }}</strong>
+                                </td>
+                                <td class="border-0 align-middle" style="text-align: center">
+                                    <strong>{{ i.count }}</strong>
+                                </td>
+                                <td class="border-0 align-middle"><a href="/cancelreturn/{{i.ordernumber}}/" class="btn btn-dark rounded-pill py-2 btn-block">
+                                cancel</a></td>
+                                <td class="border-0 align-middle"><a href="/confirmreturn/{{i.ordernumber}}/" class="btn btn-dark rounded-pill py-2 btn-block">
+                                confirm</a></td>
+
+                            </tr>
+
+
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- End -->
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ##### Main Content Wrapper End ##### -->
+{% endblock %}
+</html>

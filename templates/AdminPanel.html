@@ -1,0 +1,81 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block title %}
+        <title>Admin</title>
+    {% endblock %}
+</head>
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="container-fluid mx-auto">
+                </div>
+                <div class="box mt-0 pb-0 no-horizontal-padding">
+                    <div class="table-responsive">
+                        <table class="table ">
+                            <thead style="white-space: nowrap">
+                            <tr>
+                                <th scope="col" class="border-0 bg-light">
+                                    <div class="p-2 px-2 text-uppercase">Products</div>
+                                </th>
+                                  <th scope="col" class="border-0 bg-light">
+                                    <div class="py-2 px-3 text-uppercase">ID</div>
+                                </th>
+                                  <th scope="col" class="border-0 bg-light">
+                                    <div class="py-2 px-3 text-uppercase">Product Name</div>
+                                </th>
+                                <th scope="col" class="border-0 bg-light">
+                                    <div class="py-2 px-3 text-uppercase">Sizes Available</div>
+                                </th>
+                                <th scope="col" class="border-0 bg-light">
+                                    <div class="py-2 px-3 text-uppercase">Add Size</div>
+                                </th>
+                                <th scope="col" class="border-0 bg-light">
+                                    <div class="py-2 text-uppercase">Price</div>
+                                </th>
+                                <th scope="col" class="border-0 bg-light">
+                                    <div class="py-2 px-3 text-uppercase">Edit</div>
+                                </th>
+                                <th scope="col" class="border-0 bg-light">
+                                    <div class="py-2 text-uppercase">Delete</div>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for i in Data %}
+                                <tr>
+                                    <th scope="row" class="border-0">
+                                        <div class="p-3">
+                                            <img src="{{ i.img1.url }}"
+                                                 alt="{{ i.id }}" width="10" class="rounded img-fluid shadow-sm">
+                                            <div class="ml-5 d-inline-block align-middle">
+                                                <h5 class="mb-0 px-3 "><a href="/productdetails/{{ i.id }}/" class="text-dark  align-middle">{{ i.id }}</a></h5>
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <td class="border-0 align-middle"><strong>{{ i.name }}</strong></td>
+
+                                    <td class="border-0 align-middle"><a href="/sizeavailable/{{ i.id }}/" class="btn btn-template-outlined">Size(s)</a>
+                                    </td>
+                                     <td class="border-0 align-middle"><a href="/sizeadd/{{ i.id }}/" class="btn btn-template-outlined ">Add</a>
+                                    </td>
+                                    <td class="border-0 align-middle"><strong>&#8377;{{ i.price }}</strong></td>
+                                    <td class="border-0 align-middle"><a href="/edit/{{ i.id }}/" class="btn btn-template-outlined ">Edit</a>
+                                    </td>
+                                    <td class="border-0 align-middle"><a href="/delete/{{ i.id }}/" class="btn btn-template-outlined">Delete</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Main Content Wrapper End ##### -->
+{% endblock %}
+</html>

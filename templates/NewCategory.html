@@ -1,0 +1,56 @@
+{% extends 'productdetails.html' %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+    <title>Add Category</title>
+    {% endblock %}
+</head>
+<body>
+{% block body %}
+    <div class="container" >
+            <div class="row">
+                <div class="col-lg-10 offset-1">
+                    <div class="addAdress box">
+                        <form method="post" action="#">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h1 style="font-weight: 300">New Category</h1>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="inputBox">
+                                        <label>Product Category*</label>
+                                        <input type="text" name="name" class="input" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12 text-right">
+                                        <button type="submit" class="btn btn-template-outlined"
+                                                style="font-size: 20px">Confirm
+                                        </button>
+                                    </div>
+
+                                </div>
+
+                        </form>
+                        <div class="info">
+                            {% if messages %}
+                            {% for i in messages %}
+                                {{ i }}
+                            {% endfor %}
+                        {%endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock body %}
+</body>
+</html>

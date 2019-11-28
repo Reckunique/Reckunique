@@ -1,0 +1,139 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block title %}<title>Cart</title>{% endblock %}
+</head>
+<body>
+{% block body %}
+
+
+ <div id="heading-breadcrumbs">
+        <div class="container">
+          <div class="row d-flex align-items-center flex-wrap">
+            <div class="col-md-7">
+              <h1 class="h2">Shopping Cart</h1>
+            </div>
+            <div class="col-md-5">
+              <ul class="breadcrumb d-flex justify-content-end">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">Shopping Cart</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+{% if i.count == 0 %}
+Shopping Cart is empty
+{% endif %}
+      <div id="content">
+        <div class="container">
+          <div class="row bar">
+            <div class="col-lg-12">
+            </div>
+            <div id="basket" class="col-lg-9">
+              <div class="box mt-0 pb-0 no-horizontal-padding">
+                <form method="get" action="">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th colspan="2">Product</th>
+                          <th>Quantity</th>
+                          <th>Size</th>
+                          <th>Unit price</th>
+                          <th>Discount</th>
+                           <th >Offer Price</th>
+                          <th>Remove</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>                      {% for i in Data %}
+
+                          <td><a href="#"><img src="{{ i.cart_product.img1.url }}" alt="{{ i.cart_product.name }}" class="img-fluid"></a></td>
+                          <td><a href="#">{{ i.cart_product.name }}</a></td>
+                          <td class="border-0 align-middle">
+                                    <div class="qtydiv">
+                                            <div class="qtybox">
+                                                <strong><a href="/cartedit1/{{ i.cart_product.id }}/">
+                                                    <span class="btnqty qtyminus icon ui-icon-minus"
+                                                          style="color: black">-</span></a>
+                                                    <input type="text" id="quantity" name="count" value="{{ i.count }}"
+                                                       min="1" class="quantity-selector quantity-input">
+                                                    <a  href="/cartedit/{{ i.cart_product.id }}/">
+                                                        <span class="btnqty qtyplus icon ui-icon-plus"
+                                                      style="color: black">+ </span></a>
+                                                    </a>
+                                                </strong>
+                                            </div>
+                                        </div>
+                                </td>
+                          <td>{{ i.cart_product.size }}</td>
+                          <td>&#8377;{{ i.cart_product.basicPrice }}</td>
+                          <td>{{ i.cart_product.discount }}%</td>
+                          <td>{{ i.cart_product.price }}</td>
+                          <td><a href="/cartdelete/{{ i.cart_product.id }}/"><i class="fa fa-trash-o"></i></a></td>
+                        </tr>
+                      </tbody>{% endfor %}
+                        <tr>
+                          <th colspan="5">Total</th>
+                          <th colspan="2">&#8377;{{ Total }}</th>
+                        </tr>
+                      </tfoot>
+
+                    </table>
+                  </div>
+                  <div class="box-footer d-flex justify-content-between align-items-center">
+                    <div class="left-col"><a href="/shop/sample/" class="btn btn-template-outlined"><i class="fa fa-chevron-left"></i> Continue shopping</a></div>
+                    <div class="right-col">
+                        <button type="submit" class="btn btn-template-outlined"><a href="/selectaddress/">Proceed to checkout</a> <i class="fa fa-chevron-right"></i></button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="row">
+
+
+
+
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div id="order-summary" class="box mt-0 mb-4 p-0">
+                <div class="box-header mt-0">
+                  <h3>Order summary</h3>
+                </div>
+                <p class="text-muted">Shipping and additional costs are calculated based on the values you have entered.</p>
+                <div class="table-responsive">
+                  <table class="table">
+                    <tbody>
+                      <tr>
+                        <td>Order subtotal</td>
+                        <th>&#8377;{{ Total }}</th>
+                      </tr>
+                      <tr>
+                        <td>Shipping and handling</td>
+                        <th>FREE</th>
+                      </tr>
+                      <tr>
+                        <td>Tax</td>
+                        <th>&#8377;0.00</th>
+                      </tr>
+                      <tr class="total">
+                        <td>Total</td>
+                        <th>&#8377;{{ Total }}</th>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </body>
+{% endblock %}
+
+</html>

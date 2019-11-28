@@ -1,0 +1,105 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}<title>Product</title>{% endblock %}
+</head>
+<body>
+{% block body %}
+<div id="heading-breadcrumbs">
+        <div class="container">
+          <div class="row d-flex align-items-center flex-wrap">
+            <div class="col-md-7">
+              <h1 class="h2">Products</h1>
+            </div>
+            <div class="col-md-5">
+              <ul class="breadcrumb d-flex justify-content-end">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">Shop</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="content">
+        <div class="container">
+          <div class="row bar">
+            <div class="col-md-3">
+              <!-- MENUS AND FILTERS-->
+              <div class="panel panel-default sidebar-menu">
+                <div class="panel-heading">
+                  <h3 class="h4 panel-title">Categories</h3>
+                </div>
+                <div class="panel-body">
+                  <ul class="nav nav-pills flex-column text-sm category-menu">
+                       <li class="nav-item"><a href="shop-category.html" class="nav-link d-flex align-items-center justify-content-between disabled"><span>Men </span><!--<span class="badge badge-secondary">42</span>--></a>
+                      <ul class="nav nav-pills flex-column">
+                        <li class="nav-item"><a href="" class="nav-link disabled">Formal Wear</a></li>
+                        <li class="nav-item"><a href="" class="nav-link disabled">Casual Wear</a></li>
+                        <li class="nav-item"><a href="" class="nav-link disabled">Sport Shoes</a></li>
+                        <li class="nav-item"><a href="" class="nav-link disabled">Casual Shoes</a></li>
+                        <li class="nav-item"><a href="" class="nav-link disabled">Watches</a></li>
+                        <li class="nav-item"><a href="" class="nav-link disabled">Belt</a></li>
+                        <li class="nav-item"><a href="" class="nav-link disabled">Wallets</a></li>
+                        <li class="nav-item"><a href="" class="nav-link disabled">Deodorant</a></li>
+
+                      </ul>
+                    <li class="nav-item"><a href="shop-category.html" class="nav-link d-flex align-items-center justify-content-between"><span>Women</span></a>
+                      <ul class="nav flex-column">
+                          {% for i in Cat %}
+                        <li class="nav-item"><a href="/shop/{{ i.cname }}/" class="nav-link">{{ i.cname }}</a></li>
+                          {% endfor %}
+                           <!-- {% for i in Siz %}
+                                 {% if i.sname != "all" %}
+                                 <li><a href="/shop2/{{ i.sname }}/">
+                                 {{ i.sname }}</a></li>
+                                   {% endif %}
+                            {% endfor %}-->
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              </div>
+
+            <div class="col-md-9">
+                {% if No %}
+    <div class="product-unavail">
+        <h2 style="background-image: {% static 'images/banner.jpg' %}">{{ No }}</h2>
+    </div>
+    {% endif %}
+              <p class="text-muted lead">In our Ladies department we offer wide selection of the best products we have found and carefully selected worldwide. </p>
+               <div class="container-fluid">
+            <div class="row">
+                {% for i in posts %}
+                    <div class="col-lg-3 col-md-4 col-sm-6  d-flex text-center ">
+                        <div class="card-deck" style="padding-bottom: 2%">
+                            <div class="card ">
+                                <a href="/productdetails/{{ i.id }}">
+                                <img src="{{ i.img1.url }}" class="card-img-top img-fluid" alt="{{ i.name }}">
+                                </a>
+                                <div class="card-body">
+                                    <h5 class="card-title ctm-color text-uppercase "><a href="/productdetails/{{ i.id }}" style="height: 100%;color: black ">{{ i.name }}</a></h5>
+                                </div>
+                                <div class="card-footer">
+                                    <small><b>&#8377; {{ i.price }}</b></small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+                 <div class="row">
+                <div class="col-md-12 banner mb-small"><a href="#"><img src="img/banner2.jpg" alt="" class="img-fluid"></a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+{% endblock %}
+
+</body>
+</html>
